@@ -1,2 +1,4 @@
-# go-by-example
-by Mark McGranaghan
+# Source:
+## Go by Example
+## by Mark McGranaghan
+https://gobyexample.com/
