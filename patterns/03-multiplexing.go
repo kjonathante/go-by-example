@@ -6,6 +6,8 @@ import (
 	"time"
 )
 
+// docker run --interactive --tty --rm --volume $(pwd):/go golang:1.8 bash
+
 // Generator: function that returns a channel
 // Channels are first-class values, just like strings or integers.
 func boring(msg string) <-chan string { // Returns receive-only channel of strings.
@@ -13,7 +15,7 @@ func boring(msg string) <-chan string { // Returns receive-only channel of strin
 	go func() { // We launch the goroutine from inside the function.
 		for i := 0; ; i++ {
 			c <- fmt.Sprintf("%s %d", msg, i)
-			time.Sleep(time.Duration(rand.Intn(1e3)) * time.Millisecond)
+			time.Sleep(time.Duration(rand.Intn(1e2)) * time.Millisecond)
 		}
 	}()
 	return c // Return the channel to the caller.
@@ -21,7 +23,7 @@ func boring(msg string) <-chan string { // Returns receive-only channel of strin
 
 // Multiplexing
 // We use a fan-in function to let whosoever is ready talk.
-func fanIn(input1, input2 <-chan string) <-chan string {
+func fanIn(input1, input2 <-chan string) <-chan string {  // func fanIn(input1 <-chan string, input2 <-chan string) <-chan string
 	c := make(chan string)
 	go func() { for { c <- <-input1 } }()
 	go func() { for { c <- <-input2 } }()

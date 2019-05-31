@@ -3,9 +3,10 @@
 ## by Mark McGranaghan
 https://gobyexample.com/
 
+[additional info](./README2.md)
 
 docker run --rm -v "$PWD":/usr/src/myapp -w /usr/src/myapp golang:1.8 go run app.go
-
+docker run --interactive --tty --rm --volume $(pwd):/go golang:1.8 bash
 
 ## Channels
 #### https://talks.golang.org/2012/concurrency.slide#19

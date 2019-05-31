@@ -6,8 +6,8 @@ import (
 	"time"
 )
 
-// Generator: function that returns a channel
-// Channels are first-class values, just like strings or integers.
+// source: https://talks.golang.org/2012/concurrency.slide#26
+
 func boring(msg string) <-chan string { // Returns receive-only channel of strings.
 	c := make(chan string)
 	go func() { // We launch the goroutine from inside the function.
