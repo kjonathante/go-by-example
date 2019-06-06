@@ -5,8 +5,17 @@ https://gobyexample.com/
 
 [additional info](./README2.md)
 
-docker run --rm -v "$PWD":/usr/src/myapp -w /usr/src/myapp golang:1.8 go run app.go
+### Interact with the golang docker container
+```bash
 docker run --interactive --tty --rm --volume $(pwd):/go golang:1.8 bash
+```
+```bash
+$ go run app.go
+```
+### Running your code inside the golang docker container
+```
+docker run --rm -v "$PWD":/usr/src/myapp -w /usr/src/myapp golang:1.8 go run app.go
+```
 
 ## Channels
 #### https://talks.golang.org/2012/concurrency.slide#19
